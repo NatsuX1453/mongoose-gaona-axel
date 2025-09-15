@@ -1,36 +1,24 @@
-import { model, Schema, Types } from 'mongoose';
+import { model, Schema } from 'mongoose';
+
+const ParticipantSchema = new Schema(
+	{
+		character_name: String,
+		race: String,
+		clan: String,
+	},
+	{ _id: false },
+);
 
 export const TournamentSchema = new Schema(
 	{
-		name: {
-			type: String,
-			required: true,
-		},
-		location: {
-			type: String,
-		},
-		date: {
-			type: Date,
-		},
-		description: {
-			type: String,
-		},
-		participants: [
-			{
-				type: Types.ObjectId,
-				ref: 'Character',
-				required: true,
-			},
-		],
-		winner: {
-			type: Types.ObjectId,
-			ref: 'Character',
-			required: true,
-		},
+		name: { type: String, required: true },
+		location: String,
+		date: Date,
+		description: String,
+		participants: [ParticipantSchema],
+		winner: ParticipantSchema,
 	},
-	{
-		versionKey: false,
-	},
+	{ versionKey: false },
 );
 
 export const TournamentModel = model('Tournament', TournamentSchema);
