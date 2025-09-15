@@ -2,7 +2,7 @@ import { Router } from 'express';
 import {
 	createTournament,
 	deleteTournament,
-	getAllTournaments,
+	getTournaments,
 	getTournamentById,
 	updateTournament,
 } from '../controllers/tournament.controller.js';
@@ -10,7 +10,7 @@ import {
 export const tournamentRoutes = Router();
 
 tournamentRoutes.post('/tournaments', createTournament);
-tournamentRoutes.get('/tournaments', getAllTournaments);
+tournamentRoutes.get('/tournaments', getTournaments);
 tournamentRoutes.get('/tournaments/:id', getTournamentById);
 tournamentRoutes.put('/tournaments/:id', updateTournament);
 tournamentRoutes.delete('/tournaments/:id', deleteTournament);
